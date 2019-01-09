@@ -3,7 +3,10 @@ const app = express();
 const port = 3000;
 const CoinRouter = require('./routers/CoinRouter');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/expressdemo');
 app.use(express.static('public'));
