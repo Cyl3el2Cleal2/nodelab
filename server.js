@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const CoinRouter = require('./routers/CoinRouter');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/expressdemo');
 app.use(express.static('public'));
 app.use('/coins', CoinRouter);
 app.set('view engine', 'ejs');
